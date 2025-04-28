@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap');
+* {
+    margin: 0;
+    font-family: "MuseoModerno", sans-serif;
+}
+body {
+    background-color: azure;
+    display: grid;
+}
+h1, h2 {
+    background-color: darkblue;
+    color: white;
+    padding: 1.5rem;
+    
+    align-self: center;
+}
+
+leaderboard-container {
+    display: grid;
+    columns: 2;
+}
+
+form {
+    display: grid;
+    columns: 1;
+    max-width: 30rem;
+
+    button {
+        max-width: 10rem;
+        align-self: center;
+    }
+}

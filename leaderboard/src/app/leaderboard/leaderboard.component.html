@@ -1,8 +1,6 @@
-<p>leaderboard works!</p>
 <h2>Leaderboard entries</h2>
-<ul>
-    <li *ngFor="let entry of entries$ | async" [ngStyle]="{'color': entry.color}">
+<ul class="leaderboard">
+    <li *ngFor="let entry of entries$ | async" [ngStyle]="{'color': entry.color}" class="entry">
         {{entry.name}} - {{entry.time}}
     </li>
-    
 </ul>
