@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LeaderboardService } from '../leaderboard.service';
 import { LeaderboardEntry } from '../leaderboard-entry';
 
 @Component({
@@ -12,15 +13,16 @@ import { LeaderboardEntry } from '../leaderboard-entry';
   styleUrl: './leaderboard.component.scss'
 })
 export class LeaderboardComponent {
+  entries: LeaderboardEntry[] = [];
 
-  leaderboardEntryList: LeaderboardEntry[] = [
-    {id: 0, name: 'Max Verstappen', color: '#f57842', time: '1:07.719'}
-  ]
+  constructor(private leaderboardService: LeaderboardService){}
 
-  getAllLeaderBoardEntries(){
-    // TODO return sorted list
-    return this.leaderboardEntryList;
+  getLeaderboardEntries() : void {
+    this.entries = this.leaderboardService.getAllLeaderBoardEntries();
   }
 
+  ngOnInit(): void {
+    this.getLeaderboardEntries();
+  }
 
 }
