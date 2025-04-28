@@ -15,17 +15,20 @@ export class EntryformComponent {
   entryName = ''
   entryForm = new FormGroup({
     name: new FormControl(''),
-    email: new FormControl(''),
+    time: new FormControl(''),
+    color: new FormControl(''),
   });
 
   handleSubmit() {
-    alert(
-      this.entryForm.value.name + ' | ' + this.entryForm.value.email
+    // non-null assertion operator tells the compiler that name, color and time will never be null
+    this.leaderboardService.addEntry(
+      this.entryForm.value.name!, 
+      this.entryForm.value.color!, 
+      this.entryForm.value.time!
     );
+    this.entryForm.reset();
   }
 
 
-  constructor(
-    private leaderboardService: LeaderboardService
-  ){}
+  constructor(private leaderboardService: LeaderboardService){}
 }

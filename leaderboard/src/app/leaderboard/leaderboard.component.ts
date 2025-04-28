@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeaderboardService } from '../leaderboard.service';
 import { LeaderboardEntry } from '../leaderboard-entry';
+import { OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-leaderboard',
@@ -13,16 +15,11 @@ import { LeaderboardEntry } from '../leaderboard-entry';
   styleUrl: './leaderboard.component.scss'
 })
 export class LeaderboardComponent {
-  entries: LeaderboardEntry[] = [];
+  entries$: Observable<LeaderboardEntry[]>;
 
-  constructor(private leaderboardService: LeaderboardService){}
-
-  getLeaderboardEntries() : void {
-    this.entries = this.leaderboardService.getAllLeaderBoardEntries();
+  constructor(private leaderboardService: LeaderboardService){
+    this.entries$ = this.leaderboardService.getAllLeaderBoardEntries();
   }
 
-  ngOnInit(): void {
-    this.getLeaderboardEntries();
-  }
 
 }
