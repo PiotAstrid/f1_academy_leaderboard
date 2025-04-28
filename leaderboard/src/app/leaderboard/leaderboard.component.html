@@ -1,0 +1,8 @@
+<p>leaderboard works!</p>
+<h2>Leaderboard entries</h2>
+<ul>
+    <li *ngFor="let entry of leaderboardEntryList" [ngStyle]="{'color': entry.color}">
+        {{entry.name}} - {{entry.time}}
+    </li>
+    
+</ul>
