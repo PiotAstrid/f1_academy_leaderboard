@@ -1,4 +1,14 @@
 <h2>Add new entry to the leaderboard</h2>
-<form (ngSubmit)="testForm()">
-    <button>Test</button>
-</form>
+<p>Name: {{entryForm.value.name}}</p>
+<p>Email: {{entryForm.value.email}}</p>
+<form [formGroup]="entryForm" (ngSubmit)="handleSubmit()">
+    <label>
+      Name
+      <input type="text" formControlName="name" />
+    </label>
+    <label>
+      Email
+      <input type="email" formControlName="email" />
+    </label>
+    <button type="submit">Submit</button>
+  </form>

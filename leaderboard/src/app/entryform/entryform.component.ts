@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormControl, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { LeaderboardService } from '../leaderboard.service';
+import { LeaderboardEntry } from '../leaderboard-entry';
 
 @Component({
   selector: 'app-entryform',
@@ -10,8 +12,20 @@ import {FormBuilder, FormControl, ReactiveFormsModule} from '@angular/forms';
   styleUrl: './entryform.component.scss'
 })
 export class EntryformComponent {
-  // constructor(private formBuilder: FormBuilder){}
-  testForm(){
-    console.log('testiing!')
+  entryName = ''
+  entryForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+  });
+
+  handleSubmit() {
+    alert(
+      this.entryForm.value.name + ' | ' + this.entryForm.value.email
+    );
   }
+
+
+  constructor(
+    private leaderboardService: LeaderboardService
+  ){}
 }
