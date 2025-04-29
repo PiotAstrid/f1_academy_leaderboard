@@ -1,6 +1,7 @@
 <h2>Leaderboard entries</h2>
-<ul class="leaderboard">
-    <li *ngFor="let entry of entries$ | async" [ngStyle]="{'color': entry.color}" class="entry">
-        {{entry.name}} - {{entry.time}}
-    </li>
-</ul>
+<section class="leaderboard">
+    <section *ngFor="let entry of entries$ | async"  class="entry">
+        <section [ngStyle]="{'background': entry.color}" class="color-circle"></section>
+        <span>{{entry.name}} - {{entry.time}}</span>
+    </section>
+</section>
