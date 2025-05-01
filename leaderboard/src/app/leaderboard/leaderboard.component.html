@@ -1,7 +1,16 @@
-<h2>Leaderboard entries</h2>
-<section class="leaderboard">
-    <section *ngFor="let entry of entries$ | async"  class="entry">
-        <section [ngStyle]="{'background': entry.color}" class="color-circle"></section>
-        <span>{{entry.name}} - {{entry.time}}</span>
-    </section>
-</section>
+<div class="card bg-base-100 shadow-md p-6">
+    <h2 class="text-2xl font-bold mb-4">Leaderboard entries</h2>
+
+    <div class="space-y-3">
+        <div 
+            *ngFor="let entry of entries$ | async"  
+            class="flex items-center gap-4 p-3 rounded-lg border border-base-200">
+
+            <!-- Color Badge -->
+            <div [ngStyle]="{'background': entry.color}" class="w-6 h-6 rounded-full"></div>
+            
+            <!-- Entry Text -->
+            <span class="text-sm">{{entry.name}} - {{entry.time}}</span>
+        </div>
+    </div>
+</div>

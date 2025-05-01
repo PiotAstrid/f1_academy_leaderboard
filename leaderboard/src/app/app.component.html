@@ -1,9 +1,13 @@
-<h1 class="">Sports Leaderboard</h1>
-<p>This is a leaderboard for sports.</p>
-
-<section class="leaderboard-container">
-  <app-leaderboard></app-leaderboard>
-  <app-entryform></app-entryform>
-</section>
-
+<div class="bg-gradient-to-b from-sky-200 via-blue-100 to-white py-10">
+  <div class="w-3/4 max-w-4xl mx-auto p-4 text-center">
+    <h1 class="text-4xl font-bold mb-2">Sports Leaderboard</h1>
+    <p class="text-gray-600 mb-6">This is a leaderboard for sports.</p>
+  
+    <div class="grid gap-6 md:grid-cols-2">
+      <app-leaderboard></app-leaderboard>
+      <app-entryform></app-entryform>
+    </div>
+  
+  </div>
+</div>
 <router-outlet />

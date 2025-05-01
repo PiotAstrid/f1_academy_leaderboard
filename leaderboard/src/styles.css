@@ -4,13 +4,19 @@
 
 * {
   font-family: "MuseoModerno", sans-serif;
-  margin: 0;
+ 
 }
 
-body {
+/* @layer base {
+    h1 {
+        @apply text-4xl font-bold;
+    }
+} */
+
+/* body {
   background-color: azure;
   margin: 3rem;
-}
+} 
 
 h1,
 h2 {
@@ -100,3 +106,4 @@ button {
     width: 1rem;
   
 }
+*/
