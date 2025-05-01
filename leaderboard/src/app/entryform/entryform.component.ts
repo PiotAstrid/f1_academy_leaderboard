@@ -9,7 +9,7 @@ import { LeaderboardEntry } from '../leaderboard-entry';
     ReactiveFormsModule
   ],
   templateUrl: './entryform.component.html',
-  styleUrl: './entryform.component.scss'
+  styleUrl: './entryform.component.css'
 })
 export class EntryformComponent {
   entryName = ''

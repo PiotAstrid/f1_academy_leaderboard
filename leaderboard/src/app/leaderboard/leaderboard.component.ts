@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   ],
   standalone: true,
   templateUrl: './leaderboard.component.html',
-  styleUrl: './leaderboard.component.scss'
+  styleUrl: './leaderboard.component.css'
 })
 export class LeaderboardComponent {
   entries$: Observable<LeaderboardEntry[]>;
