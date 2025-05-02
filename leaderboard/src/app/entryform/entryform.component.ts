@@ -13,6 +13,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './entryform.component.css'
 })
 export class EntryformComponent {
+  formattedTime='';
+  rawTime = '';
+
   entryForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     time: new FormControl('', [Validators.required, Validators.pattern(/^\d+:\d{2}\.\d{3}$/)]), // 1:23.456
@@ -44,6 +47,33 @@ export class EntryformComponent {
 
   get time() {
     return this.entryForm.get('time');
+  }
+
+  onTimeInput(event: Event): void {
+    const input = (event.target as HTMLInputElement).value;
+    // keep only digits
+    const digits = input.replace(/\D/g, '');
+
+    // format: m:ss.mmm
+
+    const len = digits.length;
+    let formatted = ''
+
+    const minutes = digits.slice(0, 1);
+    const seconds = digits.slice(1, 3);
+    const millisecond = digits.slice(3, 6);
+    
+    formatted = minutes;
+
+    if (seconds) {
+      formatted += `:${seconds}`
+    }
+    if (millisecond) {
+      formatted += `.${millisecond}`
+    }
+
+    this.formattedTime = formatted;
+    this.entryForm.get('time')?.setValue(formatted, { emitEvent: false })
   }
 
   constructor(private leaderboardService: LeaderboardService){}

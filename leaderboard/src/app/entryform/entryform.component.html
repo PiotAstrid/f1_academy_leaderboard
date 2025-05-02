@@ -38,6 +38,9 @@
              <input 
                 type="text" 
                 formControlName="time"
+                [value]="formattedTime"
+                (input)="onTimeInput($event)"
+                placeholder="m:ss.mmm"
                 class="input input-bordered w-full" />
          </div>
 
