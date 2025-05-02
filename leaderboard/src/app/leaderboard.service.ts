@@ -24,7 +24,8 @@ export class LeaderboardService {
 
   // add a new entry to the leaderboard
   addEntry(name: string, color: string, time: string){
-    if (name && color && time){
+    if (name && time){
+      if (!color) color = '#000000';
       this.leaderboardEntryList = [...this.leaderboardEntryList, { name, color, time }];
       this.entriesSubject.next(this.leaderboardEntryList);
     }

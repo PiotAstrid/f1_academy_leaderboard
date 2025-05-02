@@ -14,12 +14,11 @@ import { CommonModule } from '@angular/common';
 })
 export class EntryformComponent {
   formattedTime='';
-  rawTime = '';
 
   entryForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     time: new FormControl('', [Validators.required, Validators.pattern(/^\d+:\d{2}\.\d{3}$/)]), // 1:23.456
-    color: new FormControl('#000000', Validators.required),
+    color: new FormControl('#000000'),
   });
 
   handleSubmit() {
@@ -55,16 +54,16 @@ export class EntryformComponent {
     const digits = input.replace(/\D/g, '');
 
     // format: m:ss.mmm
-
-    const len = digits.length;
     let formatted = ''
 
+    // separate minutes, seconds and milliseconds
     const minutes = digits.slice(0, 1);
     const seconds = digits.slice(1, 3);
     const millisecond = digits.slice(3, 6);
     
     formatted = minutes;
 
+    // add : and . in correct spot during typing
     if (seconds) {
       formatted += `:${seconds}`
     }
