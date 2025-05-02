@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LeaderboardEntry } from './leaderboard-entry';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,8 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 export class LeaderboardService {
   // list of sample leaderboard entries
   private leaderboardEntryList: LeaderboardEntry[] = [
-    {name: 'Max Verstappen', color: '#f57842', time: '1:07.719'},
-    {name: 'Alex Albon', color: '#0328fc', time: '1:06.758'}
+    {name: 'Emma Felbermayr', color: '#03fc6f', time: '1:07.719'},
+    {name: 'Nina Gademan', color: '#e876dd', time: '1:06.758'}
 
   ]
   
