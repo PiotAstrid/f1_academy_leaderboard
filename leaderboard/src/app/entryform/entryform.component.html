@@ -3,32 +3,38 @@
     <form [formGroup]="entryForm" (ngSubmit)="handleSubmit()">
         <!-- Name field -->
          <div class="form-control">
-             <label class="label">
+             <label class="label mb-2 pr-2">
                  Name
              </label>
+             <div *ngIf="name?.invalid && name?.touched" class="badge badge-warning ">
+                Name should have at least 2 characters</div>
              <input 
                  type="text" 
                  formControlName="name"
-                 class="input input-bordered w-full"
+                 class="input input-bordered w-full mb-4"
                  placeholder="Enter name" />
          </div>
 
         <!-- Color field -->
          <div class="form-control">
-             <label class="label">
+             <label class="label mb-2 pr-2">
                  Color
              </label>
+             <div *ngIf="color?.invalid && color?.touched" class="badge badge-warning ">
+                Please pick a color</div>
              <input 
                 type="color" 
                 formControlName="color"
-                class="input input-bordered w-full p-1" />
+                class="input input-bordered w-full p-1 mb-4" />
          </div>
 
         <!-- Time field -->
          <div class="form-control">
-             <label class="label">
+             <label class="label mb-2 pr-2">
                  Time
              </label>
+             <div *ngIf="time?.invalid && time?.touched" class="badge badge-warning ">
+                Please fill in a correct time: 1:23.456</div>
              <input 
                 type="text" 
                 formControlName="time"
@@ -37,7 +43,11 @@
 
          <!-- Submit button -->
           <div class="form-control mt-4">
-            <button type="submit" class="btn bg-cyan-500 hover:bg-cyan-600 text-white w-full">Add to leaderboard</button>
+            <button 
+                type="submit" 
+                class="btn bg-cyan-500 hover:bg-cyan-600 text-white w-full"
+                [disabled]="entryForm.invalid">
+                Add to leaderboard</button>
           </div>
     </form>
 </div>

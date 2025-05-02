@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component,  } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LeaderboardService } from '../leaderboard.service';
 import { LeaderboardEntry } from '../leaderboard-entry';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-entryform',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './entryform.component.html',
   styleUrl: './entryform.component.css'
 })
 export class EntryformComponent {
-  entryName = ''
   entryForm = new FormGroup({
-    name: new FormControl(''),
-    time: new FormControl(''),
-    color: new FormControl(''),
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    time: new FormControl('', [Validators.required, Validators.pattern(/^\d+:\d{2}\.\d{3}$/)]), // 1:23.456
+    color: new FormControl('#000000', Validators.required),
   });
 
   handleSubmit() {
+    if (this.entryForm.invalid) {
+      this.entryForm.markAllAsTouched();
+      return;
+    }
+    
     // non-null assertion operator tells the compiler that name, color and time will never be null
     this.leaderboardService.addEntry(
       this.entryForm.value.name!, 
@@ -29,6 +34,17 @@ export class EntryformComponent {
     this.entryForm.reset();
   }
 
+  get name() {
+    return this.entryForm.get('name');
+  }
+
+  get color() {
+    return this.entryForm.get('color');
+  }
+
+  get time() {
+    return this.entryForm.get('time');
+  }
 
   constructor(private leaderboardService: LeaderboardService){}
 }
