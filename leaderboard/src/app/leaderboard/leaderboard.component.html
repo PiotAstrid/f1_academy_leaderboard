@@ -3,11 +3,16 @@
 
     <div class="space-y-3">
         <div 
-            *ngFor="let entry of entries$ | async"  
+            *ngFor="let entry of entries$ | async; index as i"  
             class="flex items-center gap-4 p-3 rounded-lg border border-base-200">
 
             <!-- Color Badge -->
-            <div [ngStyle]="{'background': entry.color}" class="w-6 h-6 rounded-full"></div>
+            <div 
+                [ngStyle]="{'background': entry.color}" 
+                class="badge"
+                [ngClass]="getTextColorClass(entry.color)">
+                {{i + 1}}
+            </div>
             
             <!-- Entry Text -->
             <span class="text-sm">{{entry.name}} - {{entry.time}}</span>
