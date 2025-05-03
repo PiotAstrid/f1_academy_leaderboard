@@ -1,16 +1,18 @@
 <div class="bg-gradient-to-b from-pink-300 dark:from-pink-900 to-[var(--b1)] transition-colors duration-500">
   <div class="sm:w-3/4 w-full max-w-6xl mx-auto mb-6 p-4">
+
     <div class="text-center">
       <h1 class="text-6xl font-bold mb-2 mt-6">F1 Academy Leaderboard</h1>
-      <p class="text-md mb-6">
+      <p class="text-lg mb-6">
         F1 Academy is a female-only, Formula 4-level single-seater racing championship founded by the Formula One Group.
       </p>
     </div>
 
     <div class="grid gap-6 md:grid-cols-2 items-start">
-      <app-entryform class="sticky top-4 self-start"></app-entryform>
+      <app-entryform class="static md:sticky md:top-4 nd:self-start"></app-entryform>
       <app-leaderboard></app-leaderboard>
     </div>
+
     <button
       class="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-pink-500 text-white shadow-lg hover:bg-pink-600 transition-opacity duration-300"
       (click)="scrollToTop()"
