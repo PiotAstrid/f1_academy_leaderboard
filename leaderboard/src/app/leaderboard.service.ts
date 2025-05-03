@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LeaderboardEntry } from './leaderboard-entry';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { getCountryCode } from 'countries-list';
 
 @Injectable({
   providedIn: 'root'
@@ -8,24 +9,24 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class LeaderboardService {
   // list of sample leaderboard entries
   private leaderboardEntryList: LeaderboardEntry[] = [
-    {name: 'Emma Felbermayr', color: '#03fc6f', time: '1:07.719'},
-    {name: 'Nina Gademan', color: '#e876dd', time: '1:06.758'},
-    {name: 'Nicole Havrda', color: '#0b244d', time: '1:11.758'},
-    {name: 'Courtney Crone', color: '#f00a38', time: '1:23.758'},
-    {name: 'Aiva Anagnostiadis', color: '#fff5f7', time: '1:12.758'},
-    {name: 'Alba Larsen', color: '#26030a', time: '1:02.785'},
-    {name: 'Chloe Chambers', color: '#322085', time: '4:06.738'},
-    {name: 'Rafaela Ferreira', color: '#8290e0', time: '2:06.758'},
-    {name: 'Ella Lloyd', color: '#f06d0a', time: '2:20.758'},
-    {name: 'Alisha Palmowski', color: '#010721', time: '1:07.719'},
-    {name: 'Aurelia Nobels', color: '#edb8af', time: '1:06.758'},
-    {name: 'Joanne Coconte', color: '#ff2185', time: '1:11.758'},
-    {name: 'Chloe Chong', color: '#f5e8df', time: '1:23.758'},
-    {name: 'Doriane Pin', color: '#000000', time: '1:12.758'},
-    {name: 'Lia Block', color: '#050729', time: '1:02.785'},
-    {name: 'Maya Weug', color: '#9c0000', time: '4:06.738'},
-    {name: 'Tina Hausmann', color: '#083b28', time: '2:06.758'},
-    {name: 'Ava Dobson', color: '#081f3b', time: '2:20.758'},
+    {name: 'Nicole Havrda', color: '#0b244d', time: '1:00.456', countryCode: 'CA'},
+    {name: 'Nina Gademan', color: '#e876dd', time: '1:06.758', countryCode: 'NL'},
+    {name: 'Emma Felbermayr', color: '#03fc6f', time: '1:07.719', countryCode: 'AT'},
+    {name: 'Courtney Crone', color: '#f00a38', time: '1:09.758', countryCode: 'US'},
+    {name: 'Aiva Anagnostiadis', color: '#fff5f7', time: '1:12.758', countryCode: 'AU'},
+    {name: 'Alba Larsen', color: '#26030a', time: '1:13.725', countryCode: 'DK'},
+    {name: 'Chloe Chambers', color: '#322085', time: '1:13.738', countryCode: 'US'},
+    {name: 'Rafaela Ferreira', color: '#8290e0', time: '1:15.758', countryCode: 'BR'},
+    {name: 'Ella Lloyd', color: '#f06d0a', time: '1:20.758', countryCode: 'GB'},
+    {name: 'Alisha Palmowski', color: '#010721', time: '1:23.719', countryCode: 'GB'},
+    {name: 'Aurelia Nobels', color: '#edb8af', time: '1:25.758', countryCode: 'BR'},
+    {name: 'Joanne Coconte', color: '#ff2185', time: '1:27.758', countryCode: 'AU'},
+    {name: 'Chloe Chong', color: '#f5e8df', time: '1:35.758', countryCode: 'GB'},
+    {name: 'Doriane Pin', color: '#000000', time: '1:37.758', countryCode: 'FR'},
+    {name: 'Lia Block', color: '#050729', time: '1:38.785', countryCode: 'US'},
+    {name: 'Maya Weug', color: '#9c0000', time: '1:39.738', countryCode: 'NL'},
+    {name: 'Tina Hausmann', color: '#083b28', time: '2:06.758', countryCode: 'CH'},
+    {name: 'Ava Dobson', color: '#081f3b', time: '2:20.758', countryCode: 'US'}
 
   ]
   
@@ -38,11 +39,13 @@ export class LeaderboardService {
   }
 
   // add a new entry to the leaderboard
-  addEntry(name: string, color: string, time: string){
-    if (name && time){
+  addEntry(name: string, color: string, time: string, countryCode: string){
+    const country = getCountryCode(countryCode);
+    if (name && time && country){
       // the default color is black
       if (!color) color = '#000000';
-      this.leaderboardEntryList = [...this.leaderboardEntryList, { name, color, time }];
+      
+      this.leaderboardEntryList = [...this.leaderboardEntryList, { name: name, color: color, time: time, countryCode: country}];
       
       // sort list by time
       const sorted = [...this.leaderboardEntryList].sort((a, b) =>

@@ -15,11 +15,18 @@
                      {{i + 1}}
                  </div>
                  <!-- Driver name -->
-                 <span class="font-bold pl-2">{{entry.name}}</span>
+                 <span class="font-bold pl-2 pr-2">{{entry.name}}</span>
+                 <!-- Country flag -->
+                 <img [src]="'https://flagcdn.com/' + entry.countryCode.toLowerCase() + '.svg'" alt="{{entry.countryCode}} flag" class="w-6 h-4 inline-block rounded-sm" />
              </div>
                 <!-- Lap time -->
                 <span>{{entry.time}}</span>
 
         </div>
+        <ng-container *ngIf="entries$ | async as entries">
+            <span *ngIf="entries.length === 0">
+              There are no entries yet. Use the form to add one.
+            </span>
+          </ng-container>
     </div>
 </div>
