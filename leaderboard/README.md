@@ -1,59 +1,20 @@
-# Leaderboard
+# F1 Academy Leaderboard
+A web app built Angular, Tailwind CSS and DaisyUI. The app shows a leaderboard for [F1 Academy](https://www.f1academy.com/Racing-Series/Calendar) race timing. Users can add and view race entries, which are automatically sorted by lap time.
+## Features
+ - Add new leaderboard entries (name, lap time, color)
+ - Entries are automatically sorted by lap time, fastest to slowest
+ - Colored badge with dynamic text contrast
+ - Light and dark mode with Tailwind and DaisyUI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+## Usage
+1. Type the driver's name
+2. Pick a color to represent the driver using the color picker, or leave the color picker as-is to use the default black color
+3. Type a lap time using only digits: the time will be formatted as you type
+4. Click "Add to Leaderboard": the entry will appear in the leaderboard ranked by lap time
 
-## Development server
-
-To start a local development server, run:
-
+## Installation
 ```bash
+cd leaderboard
 ng serve
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Visit `http://localhost:4200/` to view the app.
