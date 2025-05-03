@@ -9,7 +9,23 @@ export class LeaderboardService {
   // list of sample leaderboard entries
   private leaderboardEntryList: LeaderboardEntry[] = [
     {name: 'Emma Felbermayr', color: '#03fc6f', time: '1:07.719'},
-    {name: 'Nina Gademan', color: '#e876dd', time: '1:06.758'}
+    {name: 'Nina Gademan', color: '#e876dd', time: '1:06.758'},
+    {name: 'Nicole Havrda', color: '#e876dd', time: '1:11.758'},
+    {name: 'Courtney Crone', color: '#e876dd', time: '1:23.758'},
+    {name: 'Aiva Anagnostiadis', color: '#e876dd', time: '1:12.758'},
+    {name: 'Alba Larsen', color: '#e876dd', time: '1:02.785'},
+    {name: 'Chloe Chambers', color: '#e876dd', time: '4:06.738'},
+    {name: 'Rafaela Ferreira', color: '#e876dd', time: '2:06.758'},
+    {name: 'Ella Lloyd', color: '#e876dd', time: '2:20.758'},
+    {name: 'Emma Felbermayr', color: '#03fc6f', time: '1:07.719'},
+    {name: 'Nina Gademan', color: '#e876dd', time: '1:06.758'},
+    {name: 'Nicole Havrda', color: '#e876dd', time: '1:11.758'},
+    {name: 'Courtney Crone', color: '#e876dd', time: '1:23.758'},
+    {name: 'Aiva Anagnostiadis', color: '#e876dd', time: '1:12.758'},
+    {name: 'Alba Larsen', color: '#e876dd', time: '1:02.785'},
+    {name: 'Chloe Chambers', color: '#e876dd', time: '4:06.738'},
+    {name: 'Rafaela Ferreira', color: '#e876dd', time: '2:06.758'},
+    {name: 'Ella Lloyd', color: '#e876dd', time: '2:20.758'},
 
   ]
   
