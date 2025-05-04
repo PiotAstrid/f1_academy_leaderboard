@@ -1,7 +1,6 @@
 import { Component, } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LeaderboardService } from '../leaderboard.service';
-import { LeaderboardEntry } from '../leaderboard-entry';
 import { CommonModule } from '@angular/common';
 import { countries } from 'countries-list'
 import { OnInit } from '@angular/core';
@@ -28,6 +27,7 @@ export class EntryformComponent implements OnInit{
   });
 
   ngOnInit() {
+    // load a list of countries to pick from
     this.countryList = Object.values(countries).map(country => country.name);
   }
 
@@ -43,7 +43,6 @@ export class EntryformComponent implements OnInit{
       this.entryForm.value.color!,
       this.entryForm.value.time!,
       this.entryForm.value.countryCode!
-
     );
     this.entryForm.reset();
   }
@@ -65,8 +64,8 @@ export class EntryformComponent implements OnInit{
   }
 
   onTimeInput(event: Event): void {
-
     const input = (event.target as HTMLInputElement).value;
+
     // keep only digits
     const digits = input.replace(/\D/g, '');
 
