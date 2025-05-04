@@ -29,7 +29,9 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/package.json",
+              "src/electron.prod.js"
             ],
             "styles": [
               "src/styles.css"
@@ -93,7 +95,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              
+              "src/package.json",
+              "src/electron.prod.js"
             ],
             "styles": [
               "src/styles.css"

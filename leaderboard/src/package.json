@@ -1,0 +1,8 @@
+{
+    "name": "leaderboard",
+    "productName": "Leaderboard",
+    "version": "1.0.0",
+    "description": "Leaderboard app",
+    "main": "electron.prod.js",
+    "license": "MIT"
+}
