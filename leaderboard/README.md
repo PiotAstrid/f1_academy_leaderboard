@@ -17,6 +17,7 @@ A web app built Angular, Tailwind CSS and DaisyUI. The app shows a leaderboard f
 ## Installation
 ```bash
 cd leaderboard
+npm install
 ng serve
 ```
 Visit `http://localhost:4200/` to view the app.
