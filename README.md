@@ -1,5 +1,6 @@
 # F1 Academy Leaderboard
 A web app built Angular, Tailwind CSS and DaisyUI. The app shows a leaderboard for [F1 Academy](https://www.f1academy.com/Racing-Series/Calendar) race timing. Users can add and view race entries, which are automatically sorted by lap time.
+
 ## Features
  - Add new leaderboard entries (name, country, color, lap time)
  - Entries are automatically sorted by lap time, fastest to slowest

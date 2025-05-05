@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LeaderboardService } from '../leaderboard.service';
 import { CommonModule } from '@angular/common';
@@ -64,7 +64,8 @@ export class EntryformComponent implements OnInit{
   }
 
   onTimeInput(event: Event): void {
-    const input = (event.target as HTMLInputElement).value;
+    const inputElement = event.target as HTMLInputElement;
+    const input = inputElement.value;
 
     // keep only digits
     const digits = input.replace(/\D/g, '');
