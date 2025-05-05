@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { countries } from 'countries-list'
 import { OnInit } from '@angular/core';
 import { validCountryValidator } from '../country.validator';
+import { nameValidator } from '../name.validator';
 
 @Component({
   selector: 'app-entryform',
@@ -18,17 +19,19 @@ import { validCountryValidator } from '../country.validator';
 export class EntryformComponent implements OnInit{
   formattedTime = '';
   countryList: string[] = [];
-
-  entryForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    time: new FormControl('', [Validators.required, Validators.pattern(/^\d+:\d{2}\.\d{3}$/)]), // 1:23.456
-    color: new FormControl('#000000'),
-    countryCode: new FormControl('', [Validators.required, validCountryValidator])
-  });
+  entryForm!: FormGroup;
+  
+  constructor(private leaderboardService: LeaderboardService) { }
 
   ngOnInit() {
     // load a list of countries to pick from
     this.countryList = Object.values(countries).map(country => country.name);
+    this.entryForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(3), nameValidator(this.leaderboardService)]),
+      time: new FormControl('', [Validators.required, Validators.pattern(/^\d+:\d{2}\.\d{3}$/)]), // 1:23.456
+      color: new FormControl('#000000'),
+      countryCode: new FormControl('', [Validators.required, validCountryValidator])
+    });
   }
 
   handleSubmit() {
@@ -92,5 +95,4 @@ export class EntryformComponent implements OnInit{
     this.entryForm.get('time')?.setValue(formatted, { emitEvent: false })
   }
 
-  constructor(private leaderboardService: LeaderboardService) { }
 }

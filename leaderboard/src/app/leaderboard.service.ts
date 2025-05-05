@@ -38,6 +38,10 @@ export class LeaderboardService {
     return this.entriesSubject.asObservable();
   }
 
+  getEntry(entryName: string): LeaderboardEntry | undefined {
+    return this.leaderboardEntryList.find(entry => entry.name.toLowerCase() === entryName.toLowerCase());
+  }
+
   // add a new entry to the leaderboard
   addEntry(name: string, color: string, time: string, countryCode: string){
     const country = getCountryCode(countryCode);
@@ -57,7 +61,7 @@ export class LeaderboardService {
   }
 
   private timeToMilliseconds(time: string): number {
-    // pattern: m:ss:mmm or 1:23:456
+    // pattern: m:ss.mmm or 1:23.456
     const match = time.match(/^(\d+):(\d{2})\.(\d{3})$/) 
     // if time is invalid, return infinity
     if (!match) return Infinity; 

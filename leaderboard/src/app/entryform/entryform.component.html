@@ -3,11 +3,19 @@
     <form [formGroup]="entryForm" (ngSubmit)="handleSubmit()">
         <!-- Name field -->
          <div class="form-control">
-             <label class="label mb-2 pr-2">
-                 Name
-             </label>
-             <div *ngIf="name?.invalid && name?.touched" class="badge badge-warning ">
-                Name should have at least 2 characters</div>
+            <div class="flex items-center justify-between mb-2">
+                <label class="label pr-2">
+                    Name
+                </label>
+                <div *ngIf="name?.touched && name?.invalid">
+                   <div *ngIf="name?.errors?.['minlength']" class="badge badge-warning">
+                       Name should have at least 3 characters
+                   </div>
+                   <div *ngIf="name?.errors?.['nameExists']" class="badge badge-warning">
+                       Name is already in the leaderboard
+                   </div>
+                </div>
+            </div>
              <input 
                  type="text" 
                  formControlName="name"
@@ -17,11 +25,13 @@
 
         <!-- Country field -->
          <div class="form-control">
-             <label class="label mb-2 pr-2">
-                 Country
-             </label>
-             <div *ngIf="countryCode?.invalid && countryCode?.touched" class="badge badge-warning ">
-                Please pick a country</div>
+            <div class="flex items-center justify-between mb-2">
+                <label class="label pr-2">
+                    Country
+                </label>
+                <div *ngIf="countryCode?.invalid && countryCode?.touched" class="badge badge-warning">
+                   Please pick a country</div>
+            </div>
                 <select formControlName="countryCode" class="select select-bordered w-full mb-4">
                     <option value="">Select a country</option>
                     <option *ngFor="let country of countryList" [value]="country">
@@ -32,7 +42,7 @@
 
         <!-- Color field -->
          <div class="form-control">
-             <label class="label mb-2 pr-2">
+             <label class="label mb-2">
                  Color
              </label>
              <input 
@@ -43,11 +53,13 @@
 
         <!-- Time field -->
          <div class="form-control">
-             <label class="label mb-2 pr-2">
-                 Time
-             </label>
-             <div *ngIf="time?.invalid && time?.touched" class="badge badge-warning ">
-                Please fill in a correct time: 1:23.456</div>
+            <div class="flex items-center justify-between mb-2">
+                <label class="label pr-2">
+                    Time
+                </label>
+                <div *ngIf="time?.invalid && time?.touched" class="badge badge-warning ">
+                   Please fill in a correct time: 1:23.456</div>
+            </div>
              <input 
                 type="text" 
                 formControlName="time"
